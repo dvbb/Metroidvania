@@ -1,0 +1,4 @@
+repository "Metroidvania@tj_kannytraceable@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
