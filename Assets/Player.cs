@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("Move info")]
-    public float spped = 8f;
+    public float speed = 8f;
     public float jumpForce = 12;
 
     [Header("Dash info")]
@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     public PlayerJumpState JumpState { get; private set; }
     public PlayerAirState AirState { get; private set; }
     public PlayerDashState DashState { get; private set; }
+    public PlayerWallSlideState WallSlideState { get; private set; }
+    public PlayerWallJumpState WallJumpState { get; private set; }
     #endregion
 
 
@@ -50,6 +52,8 @@ public class Player : MonoBehaviour
         JumpState = new PlayerJumpState(this, StateMachine, "Jump");
         AirState = new PlayerAirState(this, StateMachine, "Air");
         DashState = new PlayerDashState(this, StateMachine, "Dash");
+        WallSlideState = new PlayerWallSlideState(this, StateMachine, "WallSlide");
+        WallJumpState = new PlayerWallJumpState(this, StateMachine, "WallJump");
     }
 
     private void Start()
@@ -70,6 +74,9 @@ public class Player : MonoBehaviour
     {
         dashUsageTimer -= Time.deltaTime;
 
+        if (IsWallDetected())
+            return;
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashUsageTimer<0)
         {
             dashUsageTimer = dashColdDown;
@@ -89,6 +96,7 @@ public class Player : MonoBehaviour
     }
 
     public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+    public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right*facingDir, wallCheckDistance, whatIsGround);
 
     public void OnDrawGizmos()
     {

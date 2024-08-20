@@ -22,9 +22,9 @@ public class PlayerMoveState : PlayerGroundState
     {
         base.Update();
 
-        player.SetVelocity(xInput * player.spped, rb.velocity.y);
+        player.SetVelocity(xInput * player.speed, rb.velocity.y);
 
-        if (xInput == 0)
+        if (xInput == 0 || player.IsWallDetected())
         {
             stateMachine.ChangeState(player.IdleState);
         }
