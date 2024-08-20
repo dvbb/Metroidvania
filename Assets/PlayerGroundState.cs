@@ -25,14 +25,13 @@ public class PlayerGroundState : PlayerState
     {
         base.Update();
 
+        if (Input.GetKey(KeyCode.Mouse0))
+            stateMachine.ChangeState(player.AttackState);
+
         if (!player.IsGroundDetected())
-        {
             stateMachine.ChangeState(player.AirState);
-        }
 
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
-        {
             stateMachine.ChangeState(player.JumpState);
-        }
     }
 }

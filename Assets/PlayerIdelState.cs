@@ -21,9 +21,9 @@ public class PlayerIdleState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        if (xInput != 0 )
-        {
+        if (xInput != 0 && !player.isBusy) // prohibit move attack
             stateMachine.ChangeState(player.MoveState);
-        }
+        //if (xInput != 0 )
+        //    stateMachine.ChangeState(player.MoveState);
     }
 }
