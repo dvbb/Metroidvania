@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         IdleState = new PlayerIdleState(this, StateMachine, "Idle");
         MoveState = new PlayerMoveState(this, StateMachine, "Move");
         JumpState = new PlayerJumpState(this, StateMachine, "Jump");
-        AirState = new PlayerAirState(this, StateMachine, "Air");
+        AirState = new PlayerAirState(this, StateMachine, "Jump");
         DashState = new PlayerDashState(this, StateMachine, "Dash");
         WallSlideState = new PlayerWallSlideState(this, StateMachine, "WallSlide");
         WallJumpState = new PlayerWallJumpState(this, StateMachine, "WallJump");

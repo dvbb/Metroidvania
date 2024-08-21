@@ -11,7 +11,9 @@ public class PlayerWallJumpState : PlayerState
     {
         base.Enter();
         stateTimer = .4f;
-        player.SetVelocity(5 * -player.facingDir,player.jumpForce);
+        Debug.Log("wall jump");
+        Debug.Log(player.facingDir);
+        player.SetVelocity(5 * player.facingDir, player.jumpForce);
     }
 
     public override void Exit()
