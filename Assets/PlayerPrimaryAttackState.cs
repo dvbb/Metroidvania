@@ -31,7 +31,6 @@ public class PlayerPrimaryAttackState : PlayerState
         player.SetVelocity(player.attackMovement[comboCounter].x * attackDir, player.attackMovement[comboCounter].y);
 
         stateTimer = .1f;
-        Debug.Log("enter:"+comboCounter);
     }
 
 
@@ -43,7 +42,6 @@ public class PlayerPrimaryAttackState : PlayerState
 
         comboCounter++;
         lastTimeAttacked = Time.time;
-        Debug.Log("exit:"+comboCounter);
     }
 
     public override void Update()
@@ -56,6 +54,5 @@ public class PlayerPrimaryAttackState : PlayerState
 
         if (triggerCalled)
             stateMachine.ChangeState(player.IdleState);
-        Debug.Log("update:"+comboCounter);
     }
 }

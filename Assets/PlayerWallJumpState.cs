@@ -11,8 +11,6 @@ public class PlayerWallJumpState : PlayerState
     {
         base.Enter();
         stateTimer = .4f;
-        Debug.Log("wall jump");
-        Debug.Log(player.facingDir);
         player.SetVelocity(5 * player.facingDir, player.jumpForce);
     }
 
