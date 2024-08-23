@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.IO.LowLevel.Unsafe;
+using UnityEditor;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -15,13 +16,17 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask whatIsGround;
 
-    protected int facingDir { get; private set; } = 1;
-    protected bool facingRight = true;
+    public int facingDir { get; private set; } = 1;
+    public bool facingRight = true;
 
     #region Components
-    protected Animator Anim { get; private set; }
-    protected Rigidbody2D rb { get; private set; }
+    public Animator Anim { get; private set; }
+    public Rigidbody2D rb { get; private set; }
     #endregion
+
+    protected virtual void Awake()
+    {
+    }
 
     protected virtual void Start()
     {
@@ -34,17 +39,17 @@ public class Entity : MonoBehaviour
     }
 
     #region Velocity
-    protected virtual void SetVelocity(float xVelocity, float yVelocity)
+    public virtual void SetVelocity(float xVelocity, float yVelocity)
     {
         rb.velocity = new Vector2(xVelocity, yVelocity);
         FlipController(xVelocity);
     }
-    protected virtual void ZeroVelocity() => SetVelocity(0, 0);
+    public virtual void ZeroVelocity() => SetVelocity(0, 0);
     #endregion
 
     #region Collision
-    protected virtual bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
-    protected virtual bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
+    public virtual bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
+    public virtual bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
 
     protected virtual void OnDrawGizmos()
     {
@@ -60,14 +65,14 @@ public class Entity : MonoBehaviour
     #endregion
 
     #region Flip
-    protected virtual void Flip()
+    public virtual void Flip()
     {
         facingDir *= -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
 
-    protected virtual void FlipController(float xVelocity)
+    public virtual void FlipController(float xVelocity)
     {
         if (xVelocity > 0 && !facingRight)
             Flip();

@@ -23,18 +23,18 @@ public class EnemyState
         this.animBoolName = animBoolName;
     }
 
-    public void Enter()
+    public virtual void Enter()
     {
         triggerCalled = false;
         enemy.Anim.SetBool(animBoolName, true);
     }
 
-    public void Update()
+    public virtual void Update()
     {
         stateTimer -= Time.deltaTime;
     }
 
-    public void Exit()
+    public virtual void Exit()
     {
         enemy.Anim.SetBool(animBoolName, false);
     }

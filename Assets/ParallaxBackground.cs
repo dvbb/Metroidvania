@@ -16,7 +16,7 @@ public class ParallaxBackground : MonoBehaviour
     {
         camera = GameObject.Find("Main Camera");
 
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
+        length = GetComponentInChildren<SpriteRenderer>().bounds.size.x;
         xPosition = transform.position.x;
     }
 
@@ -27,10 +27,10 @@ public class ParallaxBackground : MonoBehaviour
         float distanceMoved = camera.transform.position.x * (1 - parallaxEffect);
         transform.position = new Vector3(xPosition + distanceToMove, transform.position.y, 0);
 
-        if (distanceMoved > xPosition + length)
-            xPosition = xPosition + length;
-        else if (distanceMoved < xPosition - length)
-            xPosition = xPosition - length;
+        //if (distanceMoved > xPosition + length)
+        //    xPosition = xPosition + length;
+        //else if (distanceMoved < xPosition - length)
+        //    xPosition = xPosition - length;
 
     }
 }
