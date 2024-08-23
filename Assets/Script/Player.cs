@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     public bool isBusy { get; private set; }
 
@@ -20,21 +20,6 @@ public class Player : MonoBehaviour
     public float dashDir = 1;
     public float dashUsageTimer = 0;
     public float dashColdDown = 4f;
-
-    [Header("Collision info")]
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckDistance;
-    [SerializeField] private Transform wallCheck;
-    [SerializeField] private float wallCheckDistance;
-    [SerializeField] private LayerMask whatIsGround;
-
-    public int facingDir { get; private set; } = 1;
-    private bool facingRight = true;
-
-    #region Components
-    public Animator Anim { get; private set; }
-    public Rigidbody2D rb { get; private set; }
-    #endregion
 
     #region States
     public PlayerStateMachine StateMachine { get; private set; }
@@ -66,15 +51,14 @@ public class Player : MonoBehaviour
         AttackState = new PlayerPrimaryAttackState(this, StateMachine, "Attack");
     }
 
-    private void Start()
+    protected override void Start()
     {
-        Anim = GetComponentInChildren<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        base.Start();
 
         StateMachine.Initialize(IdleState);
     }
 
-    private void Update()
+    protected override void Update()
     {
         StateMachine.currentState.Update();
         CheckDashInput();
@@ -105,48 +89,5 @@ public class Player : MonoBehaviour
             StateMachine.ChangeState(DashState);
         }
     }
-
-    #region Velocity
-    public void SetVelocity(float xVelocity, float yVelocity)
-    {
-        rb.velocity = new Vector2(xVelocity, yVelocity);
-        FlipController(xVelocity);
-    }
-    public void ZeroVelocity() => SetVelocity(0, 0);
-    #endregion
-
-    #region Collision
     public void AnimationTrigger() => StateMachine.currentState.AnimatorFinishTrigger();
-    public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
-    public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(groundCheck.position, new Vector3(
-                groundCheck.position.x,
-                groundCheck.position.y - groundCheckDistance
-            ));
-        Gizmos.DrawLine(wallCheck.position, new Vector3(
-                wallCheck.position.x + wallCheckDistance,
-                wallCheck.position.y
-            ));
-    }
-    #endregion
-
-    #region Flip
-    public void Flip()
-    {
-        facingDir *= -1;
-        facingRight = !facingRight;
-        transform.Rotate(0, 180, 0);
-    }
-
-    public void FlipController(float xVelocity)
-    {
-        if (xVelocity > 0 && !facingRight)
-            Flip();
-        else if (xVelocity < 0 && facingRight)
-            Flip();
-    }
-    #endregion
 }
