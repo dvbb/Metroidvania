@@ -27,5 +27,6 @@ public class SkeletonAttackState : EnemyState
     public override void Exit()
     {
         base.Exit();
+        skeleton.lastTimeAttacked = Time.time;
     }
 }

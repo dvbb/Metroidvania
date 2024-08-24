@@ -9,12 +9,16 @@ public class Enemy : Entity
 {
     [SerializeField] protected LayerMask whatIsPlayer;
 
+    public float battleTime;
+
     [Header("Move info")]
     public float moveSpeed;
     public float idleTime;
 
     [Header("Attack info")]
     public float attackDistance;
+    public float attackColdDown;
+    public float lastTimeAttacked;
 
     public EnemyStateMachine StateMachine { get; private set; }
     protected override void Awake()

@@ -19,17 +19,34 @@ public class SkeletonBattleState : EnemyState
     public override void Update()
     {
         base.Update();
-        Debug.Log("skeleton.IsPlayerDetected().distance:  " + skeleton.IsPlayerDetected().distance);
-        Debug.Log("distance:  " + skeleton.attackDistance);
-        if (skeleton.IsPlayerDetected().distance < skeleton.attackDistance)
-            stateMachine.ChangeState(skeleton.attackState);
+        if (skeleton.IsPlayerDetected())
+        {
+            stateTimer = skeleton.battleTime;
+            if (skeleton.IsPlayerDetected().distance < skeleton.attackDistance && CanAttack())
+                stateMachine.ChangeState(skeleton.attackState);
+        }
         else
-            stateMachine.ChangeState(skeleton.idleState);
+        {
+            if (stateTimer < 0)
+                stateMachine.ChangeState(skeleton.idleState);
+        }
+
     }
 
     public override void Exit()
     {
         base.Exit();
+
+    }
+
+    protected bool CanAttack()
+    {
+        if (Time.time > skeleton.lastTimeAttacked + skeleton.attackColdDown)
+        {
+            skeleton.lastTimeAttacked = Time.time;
+            return true;
+        }
+        return false;
 
     }
 }

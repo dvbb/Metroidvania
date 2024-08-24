@@ -10,6 +10,8 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [Header("Collision info")]
+    public Transform attackCheck;
+    public float attackCheckRadius;
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected float groundCheckDistance;
     [SerializeField] protected Transform wallCheck;
@@ -22,6 +24,7 @@ public class Entity : MonoBehaviour
     #region Components
     public Animator Anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    public EntityFx fx { get; private set; }
     #endregion
 
     protected virtual void Awake()
@@ -30,6 +33,7 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
+        fx = GetComponentInChildren<EntityFx>();
         Anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -38,6 +42,11 @@ public class Entity : MonoBehaviour
     {
     }
 
+    public virtual void Damage()
+    {
+        fx.StartCoroutine("FlashFX");
+        Debug.Log(gameObject.name + " damage");
+    }
 
     #region Velocity
     public virtual void SetVelocity(float xVelocity, float yVelocity)
@@ -62,6 +71,7 @@ public class Entity : MonoBehaviour
                 wallCheck.position.x + wallCheckDistance,
                 wallCheck.position.y
             ));
+        Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
     }
     #endregion
 

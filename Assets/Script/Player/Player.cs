@@ -7,7 +7,7 @@ public class Player : Entity
 {
     public bool isBusy { get; private set; }
 
-    [Header("Attack movement")]
+    [Header("Attack details")]
     public Vector2[] attackMovement;
 
     [Header("Move info")]

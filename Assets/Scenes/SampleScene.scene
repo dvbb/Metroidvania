@@ -3704,6 +3704,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416e7bee3897f8b409d7d7b71173a1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackCheck: {fileID: 1390141635}
+  attackCheckRadius: 0.78
   groundCheck: {fileID: 1438172204}
   groundCheckDistance: 0.3
   wallCheck: {fileID: 1747262205}
@@ -3738,6 +3740,7 @@ Transform:
   - {fileID: 765727053}
   - {fileID: 1438172204}
   - {fileID: 1747262205}
+  - {fileID: 1390141635}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4273,6 +4276,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dab0abf9bcda0c4cb76c3820f39b6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &829019078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 7
+  m_Component:
+  - component: {fileID: 829019079}
+  m_Layer: 7
+  m_HasEditorInfo: 1
+  m_Name: AttackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &829019079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829019078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.85, y: -0.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1532178592}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1012568276
 GameObject:
   m_ObjectHideFlags: 0
@@ -4595,6 +4630,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1390141634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 7
+  m_Component:
+  - component: {fileID: 1390141635}
+  m_Layer: 6
+  m_HasEditorInfo: 1
+  m_Name: AttackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390141635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390141634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.136, y: -0.073, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 639393518}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438172203
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,6 +4848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264f0831b0bdade43a3ef1fb5fa403c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackCheck: {fileID: 829019079}
+  attackCheckRadius: 1.02
   groundCheck: {fileID: 1801131266}
   groundCheckDistance: 0.2
   wallCheck: {fileID: 1230511411}
@@ -4792,9 +4861,12 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  battleTime: 0
   moveSpeed: 2
   idleTime: 1
   attackDistance: 3
+  attackColdDown: 5
+  lastTimeAttacked: 0
 --- !u!50 &1532178591
 Rigidbody2D:
   serializedVersion: 4
@@ -4837,6 +4909,7 @@ Transform:
   - {fileID: 1733931222}
   - {fileID: 1801131266}
   - {fileID: 1230511411}
+  - {fileID: 829019079}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
