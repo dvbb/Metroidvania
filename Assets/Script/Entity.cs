@@ -38,13 +38,14 @@ public class Entity : MonoBehaviour
     {
     }
 
+
     #region Velocity
     public virtual void SetVelocity(float xVelocity, float yVelocity)
     {
         rb.velocity = new Vector2(xVelocity, yVelocity);
         FlipController(xVelocity);
     }
-    public virtual void ZeroVelocity() => SetVelocity(0, 0);
+    public virtual void SetZeroVelocity() => SetVelocity(0, 0);
     #endregion
 
     #region Collision

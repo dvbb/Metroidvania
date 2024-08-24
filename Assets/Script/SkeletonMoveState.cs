@@ -4,12 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkeletonMoveState : EnemyState
+public class SkeletonMoveState : SkeletonGroundState
 {
-    private Enemy_Skeleton skeleton;
-    public SkeletonMoveState(Enemy enemy, EnemyStateMachine stateMachine, string animBoolName, Enemy_Skeleton skeleton) : base(enemy, stateMachine, animBoolName)
+    public SkeletonMoveState(Enemy enemy, EnemyStateMachine stateMachine, string animBoolName, Enemy_Skeleton skeleton) : base(enemy, stateMachine, animBoolName, skeleton)
     {
-        this.skeleton = skeleton;
     }
 
     public override void Enter()

@@ -36,7 +36,7 @@ public class Player : Entity
     #endregion
 
 
-    private void Awake()
+    protected override void Awake()
     {
         StateMachine = new PlayerStateMachine();
 
