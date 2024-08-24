@@ -11,6 +11,10 @@ public class Enemy : Entity
 
     public float battleTime;
 
+    [Header("Stunned info")]
+    public float stunDuration;
+    public Vector2 stunDirection;
+
     [Header("Move info")]
     public float moveSpeed;
     public float idleTime;

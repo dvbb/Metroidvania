@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,11 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Transform wallCheck;
     [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask whatIsGround;
+
+    [Header("Knockback info")]
+    [SerializeField] protected Vector2 knockbackDirection;
+    [SerializeField] protected float knockbackDuration;
+    protected bool isKnocked;
 
     public int facingDir { get; private set; } = 1;
     public bool facingRight = true;
@@ -45,16 +51,32 @@ public class Entity : MonoBehaviour
     public virtual void Damage()
     {
         fx.StartCoroutine("FlashFX");
+        StartCoroutine("HitKnockback");
         Debug.Log(gameObject.name + " damage");
+    }
+
+    protected virtual IEnumerator HitKnockback()
+    {
+        isKnocked = true;
+        rb.velocity = new Vector2(knockbackDirection.x * -facingDir, knockbackDirection.y);
+        yield return new WaitForSeconds(knockbackDuration);
+        isKnocked = false;
     }
 
     #region Velocity
     public virtual void SetVelocity(float xVelocity, float yVelocity)
     {
+        if (isKnocked)
+            return;
         rb.velocity = new Vector2(xVelocity, yVelocity);
         FlipController(xVelocity);
     }
-    public virtual void SetZeroVelocity() => SetVelocity(0, 0);
+    public virtual void SetZeroVelocity()
+    {
+        if (isKnocked)
+            return;
+        SetVelocity(0, 0);
+    }
     #endregion
 
     #region Collision

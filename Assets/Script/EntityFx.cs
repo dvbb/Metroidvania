@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityFx : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer sr;
 
     [Header("Flash FX")]
     [SerializeField] private Material hitMaterial;
@@ -13,14 +13,28 @@ public class EntityFx : MonoBehaviour
     private void Start()
     {
         Debug.Log("EntityFx.start() run");
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        originalMaterial = spriteRenderer.material;
+        sr = GetComponentInChildren<SpriteRenderer>();
+        originalMaterial = sr.material;
     }
 
     private IEnumerator FlashFX()
     {
-        spriteRenderer.material = hitMaterial;
+        sr.material = hitMaterial;
         yield return new WaitForSeconds(.2f);
-        spriteRenderer.material = originalMaterial;
+        sr.material = originalMaterial;
+    }
+
+    private void RedColorBlink()
+    {
+        if (sr.color != Color.white)
+            sr.color = Color.white;
+        else
+            sr.color = Color.red;
+    }
+
+    private void CancleRedBlink()
+    {
+        CancelInvoke();
+        sr.color = Color.white;
     }
 }
