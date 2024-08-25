@@ -18,8 +18,6 @@ public class Player : Entity
     public float dashSpeed = 16f;
     public float dashDuration = 0.2f;
     public float dashDir = 1;
-    public float dashUsageTimer = 0;
-    public float dashColdDown = 4f;
 
     #region States
     public PlayerStateMachine StateMachine { get; private set; }
@@ -73,15 +71,12 @@ public class Player : Entity
 
     public void CheckDashInput()
     {
-        dashUsageTimer -= Time.deltaTime;
 
         if (IsWallDetected())
             return;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashUsageTimer < 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.Instance.dashSkill.CanUseSkill())
         {
-            dashUsageTimer = dashColdDown;
-
             dashDir = Input.GetAxis("Horizontal");
             if (dashDir == 0)
                 dashDir = facingDir;
