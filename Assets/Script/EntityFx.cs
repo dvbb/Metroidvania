@@ -12,7 +12,6 @@ public class EntityFx : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("EntityFx.start() run");
         sr = GetComponentInChildren<SpriteRenderer>();
         originalMaterial = sr.material;
     }

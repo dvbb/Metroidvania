@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashSkill:Skill
+public class DashSkill : Skill
 {
 
 }

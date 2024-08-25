@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public static SkillManager Instance;
-    public DashSkill dashSkill {  get; private set; }   
+    public static SkillManager instance;
+    public DashSkill dash {  get; private set; }   
+    public CloneSkill clone {  get; private set; }
 
     private void Awake()
     {
-        if (Instance != null)
-            Destroy(Instance.gameObject);
+        if (instance != null)
+            Destroy(instance.gameObject);
         else
-            Instance = this;
+            instance = this;
     }
 
     private void Start()
     {
-        dashSkill = GetComponent<DashSkill>();
+        dash = GetComponent<DashSkill>();
+        clone = GetComponent<CloneSkill>();
     }
 }
