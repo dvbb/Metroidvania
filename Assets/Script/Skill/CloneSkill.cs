@@ -7,6 +7,8 @@ public class CloneSkill : Skill
     [Header("Clone info")]
     [SerializeField] public GameObject clonePrefab;
     [SerializeField] public float cloneDuration;
+    [Space] 
+    [SerializeField] public bool canAttack;
 
     public void CreateClone(Transform clonePosition)
     {
@@ -15,6 +17,6 @@ public class CloneSkill : Skill
         Debug.Log(clonePosition.position.x);
         Debug.Log(clonePosition.position.y);
 
-        newClone.GetComponent<CloneSkillController>().SetUpClone(clonePosition, cloneDuration);
+        newClone.GetComponent<CloneSkillController>().SetUpClone(clonePosition, cloneDuration, canAttack);
     }
 }

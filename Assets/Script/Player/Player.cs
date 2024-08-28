@@ -28,9 +28,9 @@ public class Player : Entity
     public PlayerDashState DashState { get; private set; }
     public PlayerWallSlideState WallSlideState { get; private set; }
     public PlayerWallJumpState WallJumpState { get; private set; }
-
-
     public PlayerPrimaryAttackState AttackState { get; private set; }
+    public PlayerAimSwordState AimSwordState { get; private set; }
+    public PlayerCatchSwordState CatchSwordState   { get; private set; }
     #endregion
 
 
@@ -47,6 +47,9 @@ public class Player : Entity
         WallJumpState = new PlayerWallJumpState(this, StateMachine, "WallJump");
 
         AttackState = new PlayerPrimaryAttackState(this, StateMachine, "Attack");
+
+        AimSwordState = new PlayerAimSwordState(this, StateMachine, "AimSword");
+        CatchSwordState = new PlayerCatchSwordState(this, StateMachine, "CatchSword");
     }
 
     protected override void Start()

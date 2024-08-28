@@ -3792,6 +3792,7 @@ Transform:
   - {fileID: 1438172204}
   - {fileID: 1747262205}
   - {fileID: 1390141635}
+  - {fileID: 2069795654}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4193,7 +4194,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 0dd8671dcaa5df64ca378cc8e922edda, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4384,6 +4385,7 @@ GameObject:
   - component: {fileID: 887388186}
   - component: {fileID: 887388183}
   - component: {fileID: 887388187}
+  - component: {fileID: 887388188}
   m_Layer: 0
   m_HasEditorInfo: 1
   m_Name: SkillManager
@@ -4447,6 +4449,27 @@ MonoBehaviour:
   cooldown: 8
   clonePrefab: {fileID: 7038731395405274904, guid: dcd4a3a19410a7f47b1ab743bf34476b, type: 3}
   cloneDuration: 2
+  canAttack: 1
+--- !u!114 &887388188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887388182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303045a023c64134780a91d603d14042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  swordPrefab: {fileID: 6704594248766834973, guid: 65c3880d64aca364faba32660753a79d, type: 3}
+  launchForce: {x: 15, y: 20}
+  swordGravity: 4
+  numberOfDots: 20
+  spaceBetweenDots: 0.07
+  dotPrefab: {fileID: 9010271330145530346, guid: 84fc65e153cc8ed45958ba304b771128, type: 3}
+  dotsParent: {fileID: 2069795654}
 --- !u!1 &1012568276
 GameObject:
   m_ObjectHideFlags: 0
@@ -9655,3 +9678,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2069795653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 7
+  m_Component:
+  - component: {fileID: 2069795654}
+  m_Layer: 6
+  m_HasEditorInfo: 1
+  m_Name: AimDotParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2069795654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069795653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 639393518}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
