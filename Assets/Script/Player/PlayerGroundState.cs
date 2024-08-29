@@ -25,7 +25,7 @@ public class PlayerGroundState : PlayerState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && HasSword())
             stateMachine.ChangeState(player.AimSwordState);
 
         if (Input.GetKey(KeyCode.Mouse0))
@@ -36,5 +36,13 @@ public class PlayerGroundState : PlayerState
 
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGroundDetected())
             stateMachine.ChangeState(player.JumpState);
+    }
+
+    private bool HasSword()
+    {
+        if (player.sword == null)
+            return true;
+        player.sword.GetComponent<SwordSkillController>().ReturnSword();
+        return false;
     }
 }

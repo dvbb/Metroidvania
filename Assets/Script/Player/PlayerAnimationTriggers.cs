@@ -25,4 +25,9 @@ public class PlayerAnimationTriggers : MonoBehaviour
     {
         SkillManager.instance.sword.CreateSword();
     }
+
+    private void CatchSword()
+    {
+        player.StateMachine.ChangeState(player.IdleState);
+    }
 }

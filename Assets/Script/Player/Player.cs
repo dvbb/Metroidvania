@@ -19,6 +19,8 @@ public class Player : Entity
     public float dashDuration = 0.2f;
     public float dashDir = 1;
 
+    public GameObject sword { get; private set; }
+
     #region States
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
@@ -30,7 +32,7 @@ public class Player : Entity
     public PlayerWallJumpState WallJumpState { get; private set; }
     public PlayerPrimaryAttackState AttackState { get; private set; }
     public PlayerAimSwordState AimSwordState { get; private set; }
-    public PlayerCatchSwordState CatchSwordState   { get; private set; }
+    public PlayerCatchSwordState CatchSwordState { get; private set; }
     #endregion
 
 
@@ -88,4 +90,11 @@ public class Player : Entity
         }
     }
     public void AnimationTrigger() => StateMachine.currentState.AnimatorFinishTrigger();
+
+    public void AssignNewSword(GameObject newSword) => sword = newSword;
+    public void CatchTheSword()
+    {
+        StateMachine.ChangeState(CatchSwordState);
+        Destroy(sword);
+    }
 }

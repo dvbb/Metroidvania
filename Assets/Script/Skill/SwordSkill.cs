@@ -46,14 +46,10 @@ public class SwordSkill : Skill
         GameObject newSword = Instantiate(swordPrefab, player.transform.position, transform.rotation);
         SwordSkillController controller = newSword.GetComponent<SwordSkillController>();
 
-        Debug.Log(newSword);
-        Debug.Log(controller);
-        Debug.Log(launchForce);
-        Debug.Log(swordGravity);
-
         controller.SetUp(finalDir, swordGravity);
 
         DotsActive(false);
+        player.AssignNewSword(newSword);
     }
 
     public Vector2 AimDirection()
@@ -66,7 +62,7 @@ public class SwordSkill : Skill
 
     public void DotsActive(bool isActive)
     {
-        for (int i = 0; i < dots.Length; i++)
+        for (int i = 0; i < dots.Length; i++) 
         {
             dots[i].SetActive(isActive);
         }
