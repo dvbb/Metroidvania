@@ -17,6 +17,7 @@ public class Enemy : Entity
 
     [Header("Move info")]
     public float moveSpeed;
+    public float defaultMoveSpeed;
     public float idleTime;
 
     [Header("Attack info")]
@@ -40,6 +41,28 @@ public class Enemy : Entity
     {
         base.Update();
         StateMachine.currentState.Update();
+    }
+
+    public virtual void FreezeTime(bool timeFrozen)
+    {
+        if (timeFrozen)
+        {
+            moveSpeed = 0;
+            Anim.speed = 0;
+        }
+        else
+        {
+            moveSpeed = defaultMoveSpeed;
+            Anim.speed = 1;
+        }
+    }
+
+    public virtual IEnumerator FreezeTimerFor(float seconds)
+    {
+        Debug.Log(seconds);
+        FreezeTime(true);
+        yield return new WaitForSeconds(seconds);
+        FreezeTime(false);
     }
 
     public virtual void AnimationFinishTrigger() => StateMachine.currentState.AnimatorFinishTrigger();

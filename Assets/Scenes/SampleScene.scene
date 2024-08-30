@@ -347,6 +347,7 @@ MonoBehaviour:
   stunDuration: 3
   stunDirection: {x: 5, y: 5}
   moveSpeed: 2
+  defaultMoveSpeed: 0
   idleTime: 1
   attackDistance: 3
   attackColdDown: 5
@@ -4921,16 +4922,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  swordType: 2
+  swordType: 3
   pierceAmount: 2
   pierceGravity: 0.5
   amoundAmount: 4
   bounceGravity: 5
+  hitCooldown: 0.1
   maxTravelDistance: 10
   spinDuration: 3
   swordPrefab: {fileID: 6704594248766834973, guid: 65c3880d64aca364faba32660753a79d, type: 3}
   launchForce: {x: 30, y: 20}
   swordGravity: 3
+  freezeTime: 0.5
   numberOfDots: 20
   spaceBetweenDots: 0.07
   dotPrefab: {fileID: 9010271330145530346, guid: 84fc65e153cc8ed45958ba304b771128, type: 3}
@@ -5911,6 +5914,7 @@ MonoBehaviour:
   stunDuration: 3
   stunDirection: {x: 5, y: 5}
   moveSpeed: 2
+  defaultMoveSpeed: 0
   idleTime: 1
   attackDistance: 3
   attackColdDown: 5
@@ -6195,6 +6199,7 @@ MonoBehaviour:
   stunDuration: 3
   stunDirection: {x: 5, y: 5}
   moveSpeed: 2
+  defaultMoveSpeed: 0
   idleTime: 1
   attackDistance: 3
   attackColdDown: 5
@@ -6708,6 +6713,7 @@ MonoBehaviour:
   stunDuration: 3
   stunDirection: {x: 5, y: 5}
   moveSpeed: 2
+  defaultMoveSpeed: 0
   idleTime: 1
   attackDistance: 3
   attackColdDown: 5
@@ -6922,6 +6928,7 @@ MonoBehaviour:
   stunDuration: 3
   stunDirection: {x: 5, y: 5}
   moveSpeed: 2
+  defaultMoveSpeed: 0
   idleTime: 1
   attackDistance: 3
   attackColdDown: 5

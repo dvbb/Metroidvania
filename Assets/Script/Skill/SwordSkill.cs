@@ -31,7 +31,7 @@ public class SwordSkill : Skill
     [SerializeField] private GameObject swordPrefab;
     [SerializeField] private Vector2 launchForce;
     [SerializeField] private float swordGravity;
-
+    [SerializeField] private float freezeTime;
     private Vector2 finalDir;
 
     [Header("Aim dots")]
@@ -90,7 +90,7 @@ public class SwordSkill : Skill
                 break;
         }
 
-        controller.SetUp(finalDir, swordGravity);
+        controller.SetUp(finalDir, swordGravity,freezeTime);
 
         DotsActive(false);
         player.AssignNewSword(newSword);
