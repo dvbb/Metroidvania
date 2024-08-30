@@ -47,6 +47,7 @@ public class Enemy : Entity
     {
         if (timeFrozen)
         {
+            defaultMoveSpeed = moveSpeed;
             moveSpeed = 0;
             Anim.speed = 0;
         }

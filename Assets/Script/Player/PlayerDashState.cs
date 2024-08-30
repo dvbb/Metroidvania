@@ -14,7 +14,6 @@ public class PlayerDashState : PlayerState
         SkillManager.instance.clone.CreateClone(player.transform, new Vector3(0, 0, 0));
 
         stateTimer = player.dashDuration;
-        Debug.Log(player.transform);
     }
 
     public override void Exit()

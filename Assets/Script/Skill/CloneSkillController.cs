@@ -7,9 +7,9 @@ public class CloneSkillController : MonoBehaviour
     private SpriteRenderer sr;
     private Animator animator;
     private float cloneTimer;
-    private float colorLosingSpeed;
+    private float colorLosingSpeed = 1;
     [SerializeField] public Transform attackCheck;
-    [SerializeField] public float attackCheckRadius = .78f;
+    [SerializeField] public float attackCheckRadius = 1f;
 
     private Transform closestEnemy;
 
@@ -17,6 +17,7 @@ public class CloneSkillController : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        animator.speed = 4;
     }
 
     private void Update()

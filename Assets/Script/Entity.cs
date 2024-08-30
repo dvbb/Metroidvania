@@ -31,6 +31,7 @@ public class Entity : MonoBehaviour
     public Animator Anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
     public EntityFx fx { get; private set; }
+    public SpriteRenderer sr { get; private set; }
     #endregion
 
     protected virtual void Awake()
@@ -39,8 +40,9 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
-        fx = GetComponentInChildren<EntityFx>();
+        sr = GetComponentInChildren<SpriteRenderer>();
         Anim = GetComponentInChildren<Animator>();
+        fx = GetComponent<EntityFx>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -113,4 +115,12 @@ public class Entity : MonoBehaviour
             Flip();
     }
     #endregion
+
+    public void MakeTransparent(bool transparent)
+    {
+        if (transparent) 
+            sr.color = Color.clear;
+        else
+            sr.color = Color.white;
+    }   
 }
