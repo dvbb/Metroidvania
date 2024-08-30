@@ -6,8 +6,8 @@ public class CloneSkillController : MonoBehaviour
 {
     private SpriteRenderer sr;
     private Animator animator;
-    [SerializeField] private float colorLosingSpeed;
     private float cloneTimer;
+    private float colorLosingSpeed;
     [SerializeField] public Transform attackCheck;
     [SerializeField] public float attackCheckRadius = .78f;
 
