@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 4699646324352915479}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2681810781593948637
 SpriteRenderer:
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406658182237281405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b137236eb2f17645868bfd9ca7c5d41, type: 3}
+  m_Script: {fileID: 11500000, guid: 0855e71f369965f4f8be899dd1b29063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6286975170051852056

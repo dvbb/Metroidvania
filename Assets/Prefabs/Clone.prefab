@@ -66,7 +66,7 @@ Transform:
   m_Children:
   - {fileID: 3260017451027094695}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7381715630424776968
 SpriteRenderer:
@@ -152,9 +152,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7038731395405274904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903611b3c334d0c45a8df8c64b0eeaec, type: 3}
+  m_Script: {fileID: 11500000, guid: d2c35f6e4554dc442b570be721f641b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorLosingSpeed: 1
   attackCheck: {fileID: 3260017451027094695}
-  attackCheckRadius: 0.78
+  attackCheckRadius: 1
