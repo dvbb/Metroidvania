@@ -68,6 +68,10 @@ public class Player : Entity
     {
         StateMachine.currentState.Update();
         CheckDashInput();
+
+        if (Input.GetKeyDown(KeyCode.F))
+            SkillManager.instance.crystal.UseSkill();
+
     }
 
     public IEnumerable BusyFor(float _seconds)

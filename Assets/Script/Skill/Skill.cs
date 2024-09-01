@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill: MonoBehaviour
+public class Skill : MonoBehaviour
 {
     [SerializeField] protected float cooldown;
     protected float cooldownTimer;
@@ -34,5 +34,29 @@ public class Skill: MonoBehaviour
 
     public virtual void UseSkill()
     {
+    }
+
+    protected virtual Transform FoundClosestEnemy(Transform startTransform)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(startTransform.position, 25);
+
+        float closestDistance = Mathf.Infinity;
+        Transform closestEnemy = null;
+
+        foreach (var item in colliders)
+        {
+            if (item.GetComponent<Enemy>() != null)
+            {
+                float distanceToEnemy = Vector2.Distance(startTransform.position, item.transform.position);
+                if (distanceToEnemy < closestDistance)
+                {
+                    closestDistance = distanceToEnemy;
+                    closestEnemy = item.transform;
+                }
+            }
+        }
+        Debug.Log("closestEnemy:" + closestEnemy);
+
+        return closestEnemy;
     }
 }
