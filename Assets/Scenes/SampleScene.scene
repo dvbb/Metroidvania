@@ -4169,7 +4169,7 @@ MonoBehaviour:
   speed: 12
   jumpForce: 10
   dashSpeed: 20
-  dashDuration: 1
+  dashDuration: 0.5
   dashDir: 1
 --- !u!4 &639393518
 Transform:
@@ -4980,6 +4980,8 @@ MonoBehaviour:
   clonePrefab: {fileID: 7038731395405274904, guid: dcd4a3a19410a7f47b1ab743bf34476b, type: 3}
   cloneDuration: 0.5
   canAttack: 1
+  canAttackAtStart: 1
+  canAttackAtEnd: 1
 --- !u!114 &887388188
 MonoBehaviour:
   m_ObjectHideFlags: 0
