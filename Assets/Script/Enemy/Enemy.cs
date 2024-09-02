@@ -81,4 +81,13 @@ public class Enemy : Entity
                 0
             ));
     }
+
+    public override void Die()
+    {
+        base.Die();
+        Anim.SetBool("Die", true);
+    }
+
+    public void SelfDestroy() => Destroy(gameObject);
+
 }

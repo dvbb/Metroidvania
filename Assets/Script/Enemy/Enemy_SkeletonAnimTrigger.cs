@@ -19,7 +19,16 @@ public class Enemy_SkeletonAnimTrigger : MonoBehaviour
         foreach (var collider in colliders)
         {
             if (collider.GetComponent<Player>() != null)
-                collider.GetComponent<Player>().DamageEffect();
+            {
+                PlayerStats target = collider.GetComponent<PlayerStats>();
+                skeleton.Stats.DoDamage(target);
+            }
         }
+    }
+
+    private IEnumerator DeadAnimationTrigger()
+    {
+        yield return new WaitForSeconds(2f);
+        skeleton.SelfDestroy();
     }
 }

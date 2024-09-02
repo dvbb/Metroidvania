@@ -4513,7 +4513,7 @@ MonoBehaviour:
   cloneDuration: 0.5
   canAttack: 1
   canAttackAtStart: 1
-  canAttackAtEnd: 1
+  canAttackAtEnd: 0
 --- !u!114 &887388188
 MonoBehaviour:
   m_ObjectHideFlags: 0

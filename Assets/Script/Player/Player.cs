@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,6 +36,7 @@ public class Player : Entity
     public PlayerAimSwordState AimSwordState { get; private set; }
     public PlayerCatchSwordState CatchSwordState { get; private set; }
     public PlayerBlackholeState BlackholeState { get; private set; }
+    public PlayerDeadState DeadState { get; private set; }
     public CharacterStats Stats { get; private set; }
     #endregion
 
@@ -56,6 +59,8 @@ public class Player : Entity
         CatchSwordState = new PlayerCatchSwordState(this, StateMachine, "CatchSword");
 
         BlackholeState = new PlayerBlackholeState(this, StateMachine, "Jump");
+
+        DeadState = new PlayerDeadState(this, StateMachine, "Die");
 
         Stats = GetComponent<CharacterStats>();
     }
@@ -110,5 +115,11 @@ public class Player : Entity
     public void ExitBlackHoleAbility()
     {
         StateMachine.ChangeState(AirState);
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        StateMachine.ChangeState(DeadState);
     }
 }
