@@ -19,7 +19,7 @@ public class Enemy_SkeletonAnimTrigger : MonoBehaviour
         foreach (var collider in colliders)
         {
             if (collider.GetComponent<Player>() != null)
-                collider.GetComponent<Player>().Damage();
+                collider.GetComponent<Player>().DamageEffect();
         }
     }
 }

@@ -26,10 +26,12 @@ public class Enemy : Entity
     public float lastTimeAttacked;
 
     public EnemyStateMachine StateMachine { get; private set; }
+    public CharacterStats Stats { get; private set; }
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new EnemyStateMachine();
+        Stats = GetComponent<CharacterStats>();
     }
 
     protected override void Start()

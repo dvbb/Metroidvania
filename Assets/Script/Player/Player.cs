@@ -34,6 +34,7 @@ public class Player : Entity
     public PlayerAimSwordState AimSwordState { get; private set; }
     public PlayerCatchSwordState CatchSwordState { get; private set; }
     public PlayerBlackholeState BlackholeState { get; private set; }
+    public CharacterStats Stats { get; private set; }
     #endregion
 
 
@@ -55,6 +56,8 @@ public class Player : Entity
         CatchSwordState = new PlayerCatchSwordState(this, StateMachine, "CatchSword");
 
         BlackholeState = new PlayerBlackholeState(this, StateMachine, "Jump");
+
+        Stats = GetComponent<CharacterStats>();
     }
 
     protected override void Start()

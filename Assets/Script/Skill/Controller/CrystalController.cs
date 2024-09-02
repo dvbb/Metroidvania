@@ -55,7 +55,7 @@ public class CrystalController : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             if (collider.GetComponent<Enemy>() != null)
-                collider.GetComponent<Enemy>().Damage();
+                collider.GetComponent<Enemy>().DamageEffect();
         }
         animator.SetBool("explode", false);
         SelfDestroy();

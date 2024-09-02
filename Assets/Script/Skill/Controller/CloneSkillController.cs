@@ -50,7 +50,7 @@ public class CloneSkillController : MonoBehaviour
         foreach (var collider in colliders)
         {
             if (collider.GetComponent<Enemy>() != null)
-                collider.GetComponent<Enemy>().Damage();
+                collider.GetComponent<Enemy>().DamageEffect();
         }
     }
 
