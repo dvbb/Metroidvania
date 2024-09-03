@@ -34,6 +34,7 @@ public class Entity : MonoBehaviour
     public SpriteRenderer sr { get; private set; }
     #endregion
 
+    public Action OnFlipped;
     protected virtual void Awake()
     {
     }
@@ -105,6 +106,8 @@ public class Entity : MonoBehaviour
         facingDir *= -1;
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+        if(OnFlipped != null)
+            OnFlipped();
     }
 
     public virtual void FlipController(float xVelocity)
