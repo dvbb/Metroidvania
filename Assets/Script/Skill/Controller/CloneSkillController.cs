@@ -35,8 +35,8 @@ public class CloneSkillController : MonoBehaviour
             animator.SetInteger("AttackCount", Random.Range(1, 3));
         transform.position = _newTransform.position + offset;
         cloneTimer = _cloneDuration;
-        FaceClostestTarget();
         this.closestEnemy = closestEnemy;
+        FaceClostestTarget();
     }
 
     private void AnimationTrigger()
@@ -50,14 +50,15 @@ public class CloneSkillController : MonoBehaviour
         foreach (var collider in colliders)
         {
             if (collider.GetComponent<Enemy>() != null)
-                collider.GetComponent<Enemy>().DamageEffect();
+            {
+                EnemyStats target = collider.GetComponent<EnemyStats>();
+                PlayerManager.Instance.player.Stats.DoDamage(target);
+            }
         }
     }
 
     private void FaceClostestTarget()
     {
-
-
         if (closestEnemy != null && transform.position.x > closestEnemy.transform.position.x)
             transform.Rotate(0, 180, 0);
     }

@@ -28,7 +28,7 @@ public class Enemy_SkeletonAnimTrigger : MonoBehaviour
 
     private IEnumerator DeadAnimationTrigger()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.1f);
         skeleton.SelfDestroy();
     }
 }

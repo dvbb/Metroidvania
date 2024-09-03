@@ -118,8 +118,8 @@ public class BlackHoleController : MonoBehaviour
 
             int randomIndex = Random.Range(0, targets.Count);
 
-            float xOffset = Random.Range(0, 80) > 40 ? 1 : -1;
-
+            float xOffset = Random.Range(0, 100) > 50 ? 1 : -1;
+            Debug.Log(randomIndex);
             SkillManager.instance.clone.CreateClone(targets[randomIndex], new Vector3(xOffset, 0));
             amountOfAttacks--;
             if (amountOfAttacks <= 0)

@@ -30,7 +30,7 @@ public class CrystalController : MonoBehaviour
         crystalExistTimer -= Time.deltaTime;
         if (crystalExistTimer < 0)
             FinishCrystal();
-        if (canMove)
+        if (canMove && closestEnemy!=null)
         {
             transform.position = Vector2.MoveTowards(transform.position, closestEnemy.position, moveSpeed * Time.deltaTime);
             if(Vector2.Distance(transform.position, closestEnemy.position) < 1)
@@ -55,7 +55,10 @@ public class CrystalController : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             if (collider.GetComponent<Enemy>() != null)
-                collider.GetComponent<Enemy>().DamageEffect();
+            {
+                EnemyStats target = collider.GetComponent<EnemyStats>();
+                PlayerManager.Instance.player.Stats.DoDamage(target);
+            }
         }
         animator.SetBool("explode", false);
         SelfDestroy();
