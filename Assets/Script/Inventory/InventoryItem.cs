@@ -12,6 +12,7 @@ public class InventoryItem
     public InventoryItem(ItemData data)
     {
         this.data = data;
+        stackSize = 1;
     }
 
     public void AddStack() =>stackSize++;

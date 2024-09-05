@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class UI_ItemSlot : MonoBehaviour
+public class UI_ItemSlot : MonoBehaviour,IPointerDownHandler
 {
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemText;
@@ -12,6 +13,8 @@ public class UI_ItemSlot : MonoBehaviour
     public void UpdateSlot(InventoryItem _item)
     {
         item = _item;
+
+        itemImage.color = Color.white;
 
         if (item != null)
         {
@@ -25,5 +28,10 @@ public class UI_ItemSlot : MonoBehaviour
                 itemText.text = null;
             }
         }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        itemImage.color = Color.red;
     }
 }
